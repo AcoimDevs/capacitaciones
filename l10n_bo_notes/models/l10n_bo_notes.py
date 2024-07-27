@@ -33,6 +33,13 @@ class L10nBoNotes(models.Model):
     )
     
     
+    sale_id = fields.Many2one(
+        string='ventas',
+        comodel_name='sale.order',
+        ondelete='restrict',
+    )
+    
+
     #char
     #boolean
     #integer

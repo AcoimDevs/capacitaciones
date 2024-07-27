@@ -7,7 +7,8 @@
     'depends':[
         'base',
         'base_setup',
-        'purchase'
+        'purchase',
+        'sale_management'
     ],
     'category': 'Notes',
     'data': [
