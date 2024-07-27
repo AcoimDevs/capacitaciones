@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="0">
+        <template id = "l10n_bo_notes_report_templates">
+            <t t-call="web.external_layout">
+                <div class = "page">
+                    <h1 style="font-size: 16px;">INFORME DE NOTAS</h1>
+                    <div>
+                        <span>Creado por:</span>
+                        <b t-field="o.create_uid.name"/>
+                    </div>
+                    <div>
+                        <span>Fecha: </span> 
+                        <b t-field="o.create_date"/>
+                        
+                    </div>  
+                </div>
+                <table class="table table-sm o_main_table table-borderless mt-4">
+                    <thead style="display: table-row-group">
+                        <tr>
+                            <th name="name"><strong>Description</strong></th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <b t-field="o.purchase_id.name"/>
+                                <b t-field="o.name"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </t>    
+        </template>
+        <template id = "l10n_bo_notes_report_base_templates">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t  t-call="l10n_bo_notes.l10n_bo_notes_report_templates"/> 
+                </t>
+            </t>
+        </template>
+        
+        <record id="action_l10n_bo_notes_report_qweb-pdf" model="ir.actions.report">
+            <field name="name">Nota interna PDF</field>
+            <field name="model">l10n.bo.notes</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">l10n_bo_notes.l10n_bo_notes_report_base_templates</field>
+            <field name="binding_type">report</field>
+            <field name="report_file">l10n_bo_notes.l10n_bo_notes_report_base_templates</field>
+            <field name="paperformat_id" ref="base.paperformat_euro" />
+
+            <field name="binding_model_id" ref = "model_l10n_bo_notes"/>
+        </record>
+
+    </data>
+</odoo>
