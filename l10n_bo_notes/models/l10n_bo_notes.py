@@ -15,6 +15,7 @@ class L10nBoNotes(models.Model):
     
     check = fields.Boolean(
         string='validar',
+        default=True
     )
     
     company_id = fields.Many2one(
