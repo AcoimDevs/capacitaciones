@@ -8,7 +8,12 @@
         'base',
         'base_setup',
         'purchase',
-        'sale_management'
+        'sale_management',
+        'contacts',
+        'hr',
+        'hr_holidays',
+        'hr_expense'
+        
     ],
     'category': 'Notes',
     'data': [

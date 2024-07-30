@@ -12,10 +12,12 @@ class L10nBoNotes(models.Model):
         default='Nota interna'
          
     )
+
+
     
     check = fields.Boolean(
         string='validar',
-        default=True
+        default=False
     )
     
     company_id = fields.Many2one(
@@ -38,7 +40,56 @@ class L10nBoNotes(models.Model):
         comodel_name='sale.order',
         ondelete='restrict',
     )
+
     
+    contact = fields.Char(
+        string='contactos',
+    )
+    
+    
+    employers = fields.Boolean(
+        string='empleados',
+        default=False
+    )
+
+    
+   
+    
+    expense = fields.Boolean(
+        string='Gastos',
+        default=False 
+    )
+    
+    def saludar(self):
+        for record in self:
+            record.check = True
+            record.employers = True
+            record.expense=True
+
+
+    def cancelar(self):
+        for record in self:
+            record.check = False
+            record.employers = False
+            record.expense=False
+
+
+    state= fields.Selection(
+       string='Estado',
+       selection=[('draft', 'Borrador'), 
+               ('validated', 'validado'),
+               ('cancel','cancelado')],
+               
+        default='draft',
+    )
+
+   
+    
+
+    
+ 
+
+
 
     #char
     #boolean
